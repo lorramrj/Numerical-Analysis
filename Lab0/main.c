@@ -17,7 +17,7 @@ int main(void)
 	w[1] = 2;
 	w[2] = 3;
 
-	double resEscalar = prodescalar(3, v, w);
+	double resEscalar = escalar(3, v, w);
 	printf("Produto Escalar => v.w = ");
 	exibirVetor(v, 3);
 	printf(".");

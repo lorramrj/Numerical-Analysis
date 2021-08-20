@@ -25,7 +25,7 @@ void liberavet(double* v)
 	free(v);
 }
 
-double prodescalar(int n, double* v,  double* w)
+double escalar(int n, double* v,  double* w)
 {
 	double soma = 0;
 	for (int i = 0; i < n; i++)
@@ -137,7 +137,7 @@ void multmv(int m, int n, double** A, double* v, double* w)
 {
 	for(int i = 0; i < m; i++)
 	{
-		w[i] = prodescalar(n, A[i], v);
+		w[i] = escalar(n, A[i], v);
 	}
 }
 

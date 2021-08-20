@@ -8,7 +8,7 @@ double* criavet (int n);
 void liberavet (double* v);
 
 // calcula e retorna o produto escalar entre dois vetores de dimensão n
-double prodescalar (int n, double* v, double* w);
+double escalar (int n, double* v, double* w);
 
 // calcula e retorna a norma-2 de um vetor de dimensão n
 double norma2 (int n, double* v);
