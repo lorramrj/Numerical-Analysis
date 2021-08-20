@@ -39,9 +39,7 @@ int main(void)
      printf("\ntan2(PI/3)=%g com erro=%e", tan2(x5), tan(x5) - tan2(x5));     
      printf("\n\n");
 
-
-    /*Avalidando os valores testados percebemos que a função tan1(x) tem um error menor em comparação a tan(x) em torno de x=0.
-      Portanto tan1(x) é uma melhor aproximação para tan(x) em torno de x=0 */
-
-	return 0;
+     printf("Avalidando os valores testados percebemos que a funcao tan1(x) tem um error menor em comparacao a tan2(x) para tan(x) em torno de x=0.\nPortanto tan1(x) e uma melhor aproximacao para tan(x) em torno de x=0");
+     printf("\n\n");
+	   return 0;
 }
