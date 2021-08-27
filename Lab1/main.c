@@ -41,5 +41,6 @@ int main(void)
 
      printf("Avalidando os valores testados percebemos que a funcao tan1(x) tem um error menor em comparacao a tan2(x) para tan(x) em torno de x=0.\nPortanto tan1(x) e uma melhor aproximacao para tan(x) em torno de x=0");
      printf("\n\n");
-	   return 0;
+	
+     return 0;
 }
