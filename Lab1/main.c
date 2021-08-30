@@ -1,4 +1,5 @@
 #define _USE_MATH_DEFINES
+#include <stdio.h>
 #include <math.h>
 #include "taylor.h"
 #define PI M_PI
