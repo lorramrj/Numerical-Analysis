@@ -42,7 +42,6 @@ int secante (double x0, double x1, double (*f) (double x), double* r){
     return (passos == LIM)? 0 : passos;
 }
 
-
 int IQI (double x0, double x1, double x2, double (*f) (double x), double* r)
 {
 	int passos = 0;
