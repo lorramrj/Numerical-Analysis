@@ -1,3 +1,7 @@
+#GCC Version:
+gcc version 10.3.0 (Rev5, Built by MSYS2 project) 
+
+
 ## gcc compile:
 $ gcc -c main.c <br>
 $ gcc -c prog1.c <br>
