@@ -1,6 +1,6 @@
-#GCC Version:
+# GCC Version:
 gcc version 10.3.0 (Rev5, Built by MSYS2 project) 
-
+<br>
 
 ## gcc compile:
 $ gcc -c main.c <br>
