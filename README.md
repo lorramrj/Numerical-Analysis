@@ -5,7 +5,7 @@ $ gcc -c prog2.c
 <br>
 ...
 <br>
-$ gcc -c progN.c <br>
+$ gcc -c progN.c 
 <br>
 
 ## gcc mount: 
