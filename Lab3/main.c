@@ -23,6 +23,8 @@ int main(void)
 	b2[4] = 1.5;
 	b2[5] = 2.0;            
 
+    printf("\n\n===============================================================\n");
+    printf("\nResolvendo os sistemas da questao (2) usando a eliminacao de gauus com pivotamento e fatoracao PA=LU:");
 	printf("\n\nExibindo o vetor b1:\n");
 	exibirVetor(b1, 3);
 
@@ -79,18 +81,12 @@ int main(void)
 	A2[5][3] = 0;        
 	A2[5][4] = -1;        
 	A2[5][5] = 3;                    
-
-	printf("\n\nExibindo a Matriz A1:\n");
+   
+	printf("\n\nExibindo a Matriz A1:\n\n");
 	exibirMatriz(3, 3, A1);
 
-	printf("\n\nExibindo a Matriz A2:\n");
+	printf("\n\nExibindo a Matriz A2:\n\n");
 	exibirMatriz(6, 6, A2);
-
-    //int *p = (int *) malloc(sizeof(int)*3);
-    //fatoracao2(3, A1, p);
-    //printf("\n\n");
-    //exibirMatriz(3,3, A1);
-
 
     printf("\n--------------------------------------\n");
     printf("Resolvendo o sistema linear 1: \n");
@@ -98,11 +94,11 @@ int main(void)
     printf("\nA solucao encontrada aplicando gauus foi o vetor x:\n");
     exibirVetor(x1, 3);    
 
-    printf("\n--------------------------------------\n");
+    printf("\n\n--------------------------------------\n");
     printf("Resolvendo o sistema linear 2: \n");
-    //gauss(6, A2, b2, x2);
-    //printf("\nA solucao encontrada aplicando gauus foi o vetor x:\n");
-    //exibirVetor(x2, 6);    
+    gauss(6, A2, b2, x2);
+    printf("\nA solucao encontrada aplicando gauus foi o vetor x:\n");
+    exibirVetor(x2, 6);    
 
 	liberavet(b1);
 	liberavet(b2);
@@ -111,7 +107,7 @@ int main(void)
 
 	liberamat(3, A1);
 	liberamat(6, A2);
-
 	printf("\n\nFIM DO PROGRAMA\n");
+
 	return 0;
 }

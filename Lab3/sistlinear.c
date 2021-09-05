@@ -33,9 +33,7 @@ void fatoracao(int n, double** A, int* p)
 
      //fazer eliminacao da forma A=LU
      for(i = j + 1; i < n; i++) {
-         printf("%lf / %lf\n", A[i][j], A[j][j]);
          fat = A[i][j]/A[j][j];
-         printf("%lf\n", fat);
          for(k = j; k < n; k++)
          {
                 A[i][k] -= fat*A[j][k];
@@ -54,14 +52,14 @@ void substituicao(int n, double** A, int* p, double* b, double* x)
   for (i=0; i<n; i++) {
     s = 0;
     for (j=0; j<i; j++) 
-      s += A[i][j]*x[j];
+      s = s + A[i][j]*x[j];
     x[i] = b[p[i]] - s;
   }
 
   //retrosubstituicao
-  for (i=n-1; i>=0; --i) {
+  for (i=n-1; i>=0; i--) {
     s = 0;
-    for (j=i+1; j<n-1; ++j) 
+    for (j=i+1; j<n; j++) 
       s = s + A[i][j]*x[j];
     x[i] = (x[i] - s) / A[i][i];
   }
