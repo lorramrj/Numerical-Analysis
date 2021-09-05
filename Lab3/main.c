@@ -9,8 +9,8 @@ int main(void)
 	double *b1 = criavet(3);
 	double *b2 = criavet(6);
     
-    double *x1 = criavet(3);
-    double *x2 = criavet(6);    
+   	double *x1 = criavet(3);
+        double *x2 = criavet(6);    
 
 	b1[0] = 3;
 	b1[1] = 3;
@@ -23,16 +23,16 @@ int main(void)
 	b2[4] = 1.5;
 	b2[5] = 2.0;            
 
-    printf("\n\n===============================================================\n");
-    printf("\nResolvendo os sistemas da questao (2) usando a eliminacao de gauus com pivotamento e fatoracao PA=LU:");
+        printf("\n\n===============================================================\n");
+        printf("\nResolvendo os sistemas da questao (2) usando a eliminacao de gauus com pivotamento e fatoracao PA=LU:");
 	printf("\n\nExibindo o vetor b1:\n");
 	exibirVetor(b1, 3);
 
-    printf("\n\nExibindo o vetor b2:\n");
-    exibirVetor(b2, 6);    
+        printf("\n\nExibindo o vetor b2:\n");
+        exibirVetor(b2, 6);    
 
-    //Matrizes
-    double **A1 = criamat(3, 3);
+        //Matrizes
+        double **A1 = criamat(3, 3);
 	double **A2 = criamat(6, 6);
 
 	A1[0][0] = 1;
@@ -88,22 +88,22 @@ int main(void)
 	printf("\n\nExibindo a Matriz A2:\n\n");
 	exibirMatriz(6, 6, A2);
 
-    printf("\n--------------------------------------\n");
-    printf("Resolvendo o sistema linear 1: \n");
-    gauss(3, A1, b1, x1);
-    printf("\nA solucao encontrada aplicando gauus foi o vetor x:\n");
-    exibirVetor(x1, 3);    
-
-    printf("\n\n--------------------------------------\n");
-    printf("Resolvendo o sistema linear 2: \n");
-    gauss(6, A2, b2, x2);
-    printf("\nA solucao encontrada aplicando gauus foi o vetor x:\n");
-    exibirVetor(x2, 6);    
+        printf("\n--------------------------------------\n");
+        printf("Resolvendo o sistema linear 1: \n");
+        gauss(3, A1, b1, x1);
+        printf("\nA solucao encontrada aplicando gauus foi o vetor x:\n");
+        exibirVetor(x1, 3);    
+    
+        printf("\n\n--------------------------------------\n");
+        printf("Resolvendo o sistema linear 2: \n");
+        gauss(6, A2, b2, x2);
+        printf("\nA solucao encontrada aplicando gauus foi o vetor x:\n");
+        exibirVetor(x2, 6);    
 
 	liberavet(b1);
 	liberavet(b2);
-    liberavet(x1);
-    liberavet(x2);
+        liberavet(x1);
+        liberavet(x2);
 
 	liberamat(3, A1);
 	liberamat(6, A2);
