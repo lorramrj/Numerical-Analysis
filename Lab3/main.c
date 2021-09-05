@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "matriz.h"
 #include "sistlinear.h"
 
@@ -85,6 +86,12 @@ int main(void)
 	printf("\n\nExibindo a Matriz A2:\n");
 	exibirMatriz(6, 6, A2);
 
+    //int *p = (int *) malloc(sizeof(int)*3);
+    //fatoracao2(3, A1, p);
+    //printf("\n\n");
+    //exibirMatriz(3,3, A1);
+
+
     printf("\n--------------------------------------\n");
     printf("Resolvendo o sistema linear 1: \n");
     gauss(3, A1, b1, x1);
@@ -93,9 +100,9 @@ int main(void)
 
     printf("\n--------------------------------------\n");
     printf("Resolvendo o sistema linear 2: \n");
-    gauss(6, A2, b2, x2);
-    printf("\nA solucao encontrada aplicando gauus foi o vetor x:\n");
-    exibirVetor(x2, 6);    
+    //gauss(6, A2, b2, x2);
+    //printf("\nA solucao encontrada aplicando gauus foi o vetor x:\n");
+    //exibirVetor(x2, 6);    
 
 	liberavet(b1);
 	liberavet(b2);

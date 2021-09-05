@@ -11,55 +11,20 @@ void fatoracao(int n, double** A, int* p)
   //inicializando o vetor p de permutacao
   for (i=0; i<n; ++i) p[i] = i;
 
-  //encontrar pivô
-  for (j=0; j<n-1; ++j) {
-    m = j;
-    for (i=j+1; i<n; ++i)
-      if (fabs(A[i][j]) > fabs(A[m][j]))
-        m = i;
-
-   // troca de linhas: (j <=> m)
-   for (k=0; k<n; ++k) {
-      temp = A[j][k];
-      A[j][k] = A[m][k];
-      A[m][k] = temp;
-    }
-    
-    //registro da permutacao    
-    t = p[j];
-    p[j] = p[m];
-    p[m] = t;
-    
-    // eliminacao de gaus    
-    for (i=j+1; i<n; ++i) {
-      fat = A[i][j]/A[j][j];
-      for (k=j+1; k<n; ++k)
-        A[i][k] -= fat*A[j][k];
-      A[i][j] = fat;
-    }
-  }
-}
-
-
-void fatoracao2(int n, double** A, int* p)
-{
-  int i, j, k, m, t;
-  double fat, temp;
-
-  //inicializando o vetor p de permutacao
-  for (i=0; i<n; ++i) p[i] = i;
-
-  for(j = 0; j < n-2; j++)
+  for(j = 0; j < n-1; j++)
   {
-    //encontra pivo
+    //pivotamento
      m = j;
-     for (k = j + 1; k < n-1; k++)
+     for (k = j + 1; k < n; k++)
         if(fabs(A[k][j]) > fabs(A[m][j]))
             m = k;
 
-     //trocar linhas
-     for(k = j; k < n-1; k++)
-        A[j][k] = A[m][k];
+     for(k=0; k < n; k++)
+     {
+         temp = A[j][k];
+         A[j][k] = A[m][k];
+         A[m][k] = temp;
+     }
 
      //registrar permutacao
      t = p[j];
@@ -67,10 +32,14 @@ void fatoracao2(int n, double** A, int* p)
      p[m] = t;
 
      //fazer eliminacao da forma A=LU
-     for(i = j + 1; i < n - 1; i++) {
+     for(i = j + 1; i < n; i++) {
+         printf("%lf / %lf\n", A[i][j], A[j][j]);
          fat = A[i][j]/A[j][j];
-         for(k = j; k < n - 1; k++)
-            A[i][k] = A[i][k] - A[j][k]*fat;
+         printf("%lf\n", fat);
+         for(k = j; k < n; k++)
+         {
+                A[i][k] -= fat*A[j][k];
+         }
          A[i][j] = fat;
      }
    }
@@ -82,9 +51,9 @@ void substituicao(int n, double** A, int* p, double* b, double* x)
   double s;
 
   // substituicao progressiva
-  for (i=0; i<n; ++i) {
+  for (i=0; i<n; i++) {
     s = 0;
-    for (j=0; j<i; ++j) 
+    for (j=0; j<i; j++) 
       s += A[i][j]*x[j];
     x[i] = b[p[i]] - s;
   }
@@ -107,7 +76,7 @@ void gauss(int n, double** A, double* b, double* x)
         exit(1);
     }
 
-    fatoracao2(n, A, p);
+    fatoracao(n, A, p);
     substituicao(n, A, p, b, x);
 
     free(p);
