@@ -19,7 +19,6 @@ double exibirVetor(int n, double *v)
 	printf("%e]", v[i]);
 }
 
-
 int main(void)
 {
 	double a = -2;
@@ -42,6 +41,12 @@ int main(void)
 
 			y1 = (double *) malloc(n[i] * sizeof(double));
 			y2 = (double *) malloc(n[i] * sizeof(double));
+
+			if(x1 == NULL || x2 == NULL || y1 == NULL || y2 == NULL)
+			{
+				printf("Erro na alocacao de memoria!\n");
+				exit(1);
+			}
    
     		regular(n[i], a, b, funcDistribuicaoNormal, x1, y1);			
 			printf("> Distribuicao regular, vetores x e y:\n");
