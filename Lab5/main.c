@@ -2,6 +2,12 @@
 #include <stdlib.h>
 #include "mmq.h"
 
+double func_c(double a, double b, int t)
+{
+    return a * t * exp(b*t);
+}
+
+
 int main(void)
 {
     //erros
@@ -70,9 +76,8 @@ int main(void)
 	A2[4][2] = 3;    
 	A2[4][3] = -2;
    
-    printf("\n\n===============================================================\n");
-    printf("\n");
-	printf("\n\nExibindo o vetor b1:\n");
+    printf("\n\n===============================================================\n\n");
+	printf("Exibindo o vetor b1:\n");
 	exibirVetor(b1, 5);
 
     printf("\n\nExibindo o vetor b2:\n");
@@ -81,26 +86,26 @@ int main(void)
 	printf("\n\nExibindo a Matriz A1:\n\n");
 	exibirMatriz(5, 3, A1);
 
-	printf("\n\nExibindo a Matriz A2:\n\n");
+	printf("\nExibindo a Matriz A2:\n\n");
 	exibirMatriz(5, 4, A2);
 
     printf("\n--------------------------------------\n");
-    printf("Resolvendo o sistema inconsistente 1: \n");
+    printf("a) Resolvendo o sistema inconsistente 1: \n");
     x1_ = mmq(5, 3, A1, b1);
     r1 = mmq_norma2(5, 3, A1, b1, x1_);
 
     printf("\nA solucao encontrada aplicando mmq foi o vetor x1_:\n");
     exibirVetor(x1_, 3);    
-    printf("\nErro associado a x1_ (norma-2): %lf", r1);
+    printf("\n\nErro associado a x1_ (norma-2): %lf", r1);
     
     printf("\n\n--------------------------------------\n");
-    printf("Resolvendo o sistema inconsistente 2: \n");
+    printf("b) Resolvendo o sistema inconsistente 2: \n");
     x2_ = mmq(5, 4, A2, b2);
     r2 = mmq_norma2(5, 4, A2, b2, x2_);
 
     printf("\nA solucao encontrada aplicando mmq foi o vetor x2_:\n");
     exibirVetor(x2_, 4);    
-    printf("\nErro associado a x1_ (norma-2): %lf", r2);
+    printf("\n\nErro associado a x1_ (norma-2): %lf", r2);
      
 	liberavet(b1);
 	liberavet(b2);
@@ -111,9 +116,17 @@ int main(void)
 	liberamat(5, A2);
 
     /*----------------------------------------------------------------------*/
-        
-   	double *t = criavet(8);
-    double *c = criavet(8);
+
+    printf("\n\n--------------------------------------\n");
+    printf("c) Resolvendo o sistema inconsistente 3 (aproximacao de um modelo exponencial): \n");
+
+    int n = 8;    
+   	
+    double *t = criavet(n);
+    double *c = criavet(n);
+    
+    double *a = (double *) malloc(sizeof(double));
+    double *b = (double *) malloc(sizeof(double));
 
     t[0] = 1;
 	t[1] = 2;
@@ -133,8 +146,22 @@ int main(void)
 	c[6] = 15.2;
 	c[7] = 14.0;
 
+    ajuste(n, t, c, a, b);
+
+    printf("\nCoef. a=%lf | Coef. b=%lf\n\n", *a, *b);
+
+    printf("t(h) | c(ng/ml)\n");
+    printf("_________________\n");
+
+    int T = 8;
+    for(int i=1; i<=T; i++)
+    {
+        printf("%d | %lf\n", i, func_c(*a, *b, i));
+    }
+    printf("\n");
+
     liberavet(c);
     liberavet(t);
-    
+
 	return 0;
 }

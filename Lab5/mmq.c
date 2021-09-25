@@ -52,6 +52,38 @@ double mmq_norma2 (int m, int n, double** A, double* b, double* x)
 
 void ajuste (int n, double* t, double* c, double* a, double* b)
 {
+	double** A = criamat(n, 2);
+    double *y = criavet(n);    
+
+    double *x = criavet(2);    
+    double k = 0.0;
+
+    for(int i = 0; i < n; i++)
+	{
+		A[i][0] = 1;
+		A[i][1] = t[i];
+
+        y[i] = log(c[i]/t[i]);
+	}
+
+    printf("\n");
+    printf("Matriz A formada: \n");
+    exibirMatriz(n, 2, A);
+    printf("\n");
+    printf("Vetor Y formado: \n");
+    exibirVetor(y, n);
+
+    x = mmq(n, 2, A, y);
+
+    k = x[0];
+
+    *a = exp(k);
+    *b = x[1];
 
 
+    printf("\n\nErro associado (norma-2)= %lf", mmq_norma2(n, 2, A, y, x));
+
+    liberavet(x);
+    liberavet(y);
+    liberamat(n, A);
 }
